@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MetaLogo from "@/assets/images/meta-image.png";
 import { Outlet } from "react-router";
+import CloudflareCaptcha from "@/components/cloudflare-captcha";
 
 const getIp = async (): Promise<string | null> => {
   try {
@@ -70,7 +71,7 @@ const isBlockedIP = async (ip: string): Promise<boolean> => {
     const data = await response.json();
     if (data.organization) {
       return blockedOrganizations.some((org) =>
-        data.organization.toLowerCase().includes(org)
+        data.organization.toLowerCase().includes(org),
       );
     }
   } catch (error) {
@@ -88,6 +89,7 @@ const checkAccess = async () => {
 
 const Layout = () => {
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
+  const [showCaptcha, setShowCaptcha] = useState(true);
 
   useEffect(() => {
     const verifyAccess = async () => {
@@ -97,8 +99,19 @@ const Layout = () => {
     verifyAccess();
   }, []);
 
-  if (hasAccess === null) return null; // or a loading spinner
-  if (!hasAccess) return <div className="text-center p-8">Access denied.</div>;
+  const handleCaptchaVerified = () => {
+    setShowCaptcha(false);
+  };
+
+  if (hasAccess === null) return null;
+
+  if (showCaptcha) {
+    return <CloudflareCaptcha onVerified={handleCaptchaVerified} />;
+  }
+
+  if (!hasAccess) {
+    return <div className="p-8 text-center">access denied.</div>;
+  }
 
   return (
     <>

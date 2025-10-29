@@ -1,7 +1,7 @@
-import path from "node:path";
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import tailwindcss from "@tailwindcss/postcss";
+import path from "node:path";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
 
 export default defineConfig({
@@ -44,7 +44,8 @@ export default defineConfig({
         tag: "meta",
         attrs: {
           property: "og:image",
-          content: "https://res.cloudinary.com/dppdtq0df/image/upload/v1705144092/head_lkdnjp.png",
+          content:
+            "https://res.cloudinary.com/dppdtq0df/image/upload/v1705144092/head_lkdnjp.png",
         },
       },
       {
