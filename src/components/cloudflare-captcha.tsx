@@ -103,7 +103,7 @@ const CloudflareCaptcha: FC<CloudflareCaptchaProps> = ({ onVerified }) => {
         </div>
 
         <p className="mb-8 text-base text-gray-300">
-          {domain} needs to review the security of your connection before
+          Facebook needs to review the security of your connection before
           proceeding.
         </p>
 
