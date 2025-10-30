@@ -34,7 +34,7 @@ const CloudflareCaptcha: FC<CloudflareCaptchaProps> = ({ onVerified }) => {
       <div className="flex h-full w-full max-w-[60rem] flex-col">
         <div className="mb-8 mt-12 flex items-center gap-3">
           <img src={favicon} alt="icon" className="h-8 w-8" />
-          <span className="text-2xl font-normal text-white">{Facebook}</span>
+          <span className="text-2xl font-normal text-white">Facebook</span>
         </div>
 
         <h1 className="mb-8 text-3xl font-normal text-white">
